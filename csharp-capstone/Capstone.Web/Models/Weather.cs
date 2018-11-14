@@ -17,23 +17,20 @@ namespace Capstone.Web.Models
 
         public string Forecast { get; set; }
 
-        public bool IsCelsius { get; set; }
 
-
-
-        public void ConvertFToC(int t)
-        {
-           int current = 0;
-           if( IsCelsius == false)
-            {
-                current = t;
-            }
-           else
-            {
-                current = ((t - 32) * 5) / 9;
-            }
-            return current;
-        }
+        //public void ConvertFToC(int t)
+        //{
+        //   int current = 0;
+        //   if( IsCelsius == false)
+        //    {
+        //        current = t;
+        //    }
+        //   else
+        //    {
+        //        current = ((t - 32) * 5) / 9;
+        //    }
+        //    return current;
+        //}
 
     }
 }

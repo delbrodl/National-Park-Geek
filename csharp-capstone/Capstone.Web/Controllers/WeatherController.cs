@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Capstone.Web.DAL;
 using Capstone.Web.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Capstone.Web.Controllers
@@ -22,9 +23,21 @@ namespace Capstone.Web.Controllers
             return View(weather);
         }
 
-        private void SaveTempPreference(Weather weather)
+
+        private string GetTempPreference()
         {
-            HttpContext.Session.Set<Weather>();
+            var tempUnits = HttpContext.Session.Get<string>("tempUnits");
+            if (tempUnits == null)
+            {
+                tempUnits = "F";
+                HttpContext.Session.Set("tempUnits", "F");
+            }
+            return tempUnits;
+        }
+
+        private void SaveTempUnits(string tempUnit)
+        {
+            HttpContext.Session.Set("tempUnits", tempUnit);
         }
 
 

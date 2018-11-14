@@ -27,17 +27,20 @@ namespace Capstone.Web
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                //options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddTransient<IParkDAL>(j => new ParkSqlDAL(@"Data Source=.\sqlexpress;Initial Catalog=NPGeek;Integrated Security=true;"));
-            services.AddTransient<IWeatherDAL>(j => new WeatherSqlDAL(@"Data Source=.\sqlexpress;Initial Catalog=NPGeek;Integrated Security=true;"));
+            services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromDays(1);
                 options.Cookie.HttpOnly = true;
             });
+
+            services.AddTransient<IParkDAL>(j => new ParkSqlDAL(@"Data Source=.\sqlexpress;Initial Catalog=NPGeek;Integrated Security=true;"));
+            services.AddTransient<IWeatherDAL>(j => new WeatherSqlDAL(@"Data Source=.\sqlexpress;Initial Catalog=NPGeek;Integrated Security=true;"));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -53,6 +56,7 @@ namespace Capstone.Web
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();
