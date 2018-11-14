@@ -1,0 +1,61 @@
+﻿@model IList<Weather>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div>
+    <h2>Today</h2>
+    <img src="~/images/weather/@(Model[0].Forecast).png" alt="@Model[0].Forecast" />
+    <h3>High</h3>
+    <p>@(Model[0].High)</p>
+
+    <h3>Low</h3>
+    <p>@(Model[0].Low)</p>
+
+    @if (Model[0].Forecast == "snow")
+     {
+        <p>Pack Snowshoes</p>
+     }
+    else if (Model[0].Forecast == "rain")
+     {
+        <p>Pack rain gear and waterproof shoes</p>
+    }
+    else if (Model[0].Forecast == "thunderstorms")
+    {
+        <p>Seek shelter and avoid hiking on exposed trails</p>
+    }
+    else if (Model[0].Forecast == "sun")
+    {
+        <p>Pack sunblock</p>
+    }
+
+    @if (Model[0].High > 75 || Model[0].Low > 75 )
+    {
+        <p>Bring an extra gallon of water</p>
+    }
+    else if (Model[0].High - Model[0].Low > 20 )
+    {
+        <p>Wear breathable layers</p>
+    }
+    else if (Model[0].High < 20 || Model[0].Low < 20 )
+    {
+        <p>There is a danger of exposure to frigid tempatures</p>
+    }
+
+
+    @for (int i = 1; i < 5; i++)
+    {
+        <div>
+            <img src="~/images/weather/@(Model[i].Forecast).png" alt="@(Model[i].Forecast)" />
+            <h3>Day @(Model[i].Day)</h3>
+            <h3>High</h3>
+            <p>@(Model[i].High)</p>
+
+            <h3>Low</h3>
+            <p>@(Model[i].Low)</p>
+
+        </div>
+    }
+</div>
+

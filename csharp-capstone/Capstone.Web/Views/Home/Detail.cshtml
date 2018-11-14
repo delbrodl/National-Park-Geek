@@ -20,5 +20,7 @@
     <p>"@(Model.Quote)" -@Model.QuoteSource</p>
     <br />
     <p>@Model.Description</p>
+
+    <a asp-controller="weather" asp-action="index" asp-route-parkcode="@Model.ParkCode">Click here for the 5-day forecast</a>
 </div>
     
