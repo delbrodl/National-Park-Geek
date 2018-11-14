@@ -1,0 +1,24 @@
+﻿@model ParkDetail
+
+@{
+    ViewData["Title"] = "Detail";
+}
+<div>
+    <img src="~/images/parks/@(Model.ParkCode).jpg" alt="Scenic View of Park" />
+    <h2>@Model.Name</h2>
+    <p>State: @Model.Location</p>
+    <p>Acreage: @Model.Acreage acres</p>
+    <p>Elevation: @Model.Elevation ft.</p>
+    <p>Miles of Trail: @Model.MilesOfTrail miles</p>
+    <p>Number of Campsites: @Model.NumOfCampsites</p>
+    <p>Climate: @Model.Climate</p>
+    <p>Year Founded: @Model.YearFounded</p>
+    <p>Annual Visitor Count: @Model.AnnualVisitors on average/year</p>
+    <p>Number of Animal Species: @Model.NumOfAnimalSpecies</p>
+    <p>Entry Fee: @Model.EntryFee</p>
+    <br />
+    <p>"@(Model.Quote)" -@Model.QuoteSource</p>
+    <br />
+    <p>@Model.Description</p>
+</div>
+    
