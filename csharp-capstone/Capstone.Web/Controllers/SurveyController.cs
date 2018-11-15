@@ -24,11 +24,19 @@ namespace Capstone.Web.Controllers
             return View(survey);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SaveSurvey(Survey survey)
+        {
+            surveyDAL.AddSurvey(survey);
+
+            return RedirectToAction("Favorites", "Survey");
+        }
+
         [HttpGet]
         public IActionResult Favorites()
         {
-            var surveyResults = new SurveyResults();
-
+            var surveyResults = surveyDAL.GetSurveys();
             return View(surveyResults);
         }
 

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<form method="post" asp-controller="survey" asp-action="results">
+<form method="post" asp-controller="survey" asp-action="savesurvey">
 
     <label asp-for="ParkCode"></label>
     <select asp-for="ParkCode" asp-items="Survey.ParkCodeItems"></select>
@@ -13,8 +13,8 @@
     <label asp-for="Email"></label>
     <input asp-for="Email" /> <br />
 
-    <label asp-for="ParkCode"></label>
-    <select asp-for="ParkCode" asp-items="Survey.States"></select>
+    <label asp-for="State"></label>
+    <select asp-for="State" asp-items="Survey.States"></select>
     <br />
 
     <label asp-for="ActivityLevel"></label>

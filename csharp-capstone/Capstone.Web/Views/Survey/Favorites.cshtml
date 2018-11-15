@@ -1,7 +1,14 @@
-﻿@model  IList<SurveyResults>
+﻿@model IList<SurveyResults>
 @{
     ViewData["Title"] = "Favorites";
 }
 
 <h2>Favorites</h2>
+
+@foreach (var sr in Model)
+{
+    <img src="~/images/parks/@(sr.ParkCode).jpg" alt="Scenic View of @sr.ParkName" />
+    <h3>@sr.ParkName</h3>
+    <h4>@sr.Count</h4>
+}
 

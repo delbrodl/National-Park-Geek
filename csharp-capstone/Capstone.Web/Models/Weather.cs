@@ -21,8 +21,8 @@ namespace Capstone.Web.Models
 
         public void CovertTemps()
         {
-            this.High = this.High - 32 * (5 / 9);
-            this.Low = this.Low - 32 * (5 / 9);
+            this.High =(int)(this.High - 32 * (5.0 / 9));
+            this.Low = (int)(this.Low - 32 * (5.0 / 9));
         }
     }
 }

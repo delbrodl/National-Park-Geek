@@ -22,7 +22,7 @@ namespace Capstone.Web.DAL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT survey_result VALUES(@parkCode, @emailAddress, @state, @activityLevel);", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO survey_result(parkCode, emailAddress, state, activityLevel) VALUES(@parkCode, @emailAddress, @state, @activityLevel);", conn);
                     cmd.Parameters.AddWithValue("@parkCode", survey.ParkCode);
                     cmd.Parameters.AddWithValue("@emailAddress", survey.Email);
                     cmd.Parameters.AddWithValue("@state", survey.State);
@@ -47,14 +47,14 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT parkCode, park.parkName, COUNT(*) AS count FROM survey_result INNER JOIN park ON survey_result.parkCode = park.parkCode GROUP BY parkCode;", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT survey_result.parkCode, park.parkName, COUNT(*) AS count FROM survey_result INNER JOIN park ON survey_result.parkCode = park.parkCode GROUP BY survey_result.parkCode, park.parkName ORDER BY count DESC;", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
                         SurveyResults survey = new SurveyResults()
                         {
-                            ParkName = Convert.ToString(reader["park.parkName"]),
+                            ParkName = Convert.ToString(reader["parkName"]),
                             ParkCode = Convert.ToString(reader["parkCode"]),
                             Count = Convert.ToInt32(reader["count"]),
                         };
