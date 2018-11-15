@@ -50,5 +50,8 @@ namespace Capstone.Web.DAL
 
             return fiveDayWeather;
         }
+
+
     }
+
 }

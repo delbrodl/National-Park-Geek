@@ -3,6 +3,13 @@
     ViewData["Title"] = "Index";
 }
 
+<form asp-controller="weather" asp-action="ChangeTempUnits" method="post">
+    <input type="radio" name="tempUnits" value="F" />Fahrenheit
+    <input type="radio" name="tempUnits" value="C" />Celsius
+    <input type="hidden" name="parkCode" value="@(Model[0].ParkCode)" />
+    <input type="submit" value="submit" />
+
+</form>
 
 <div>
     <h2>Today</h2>
@@ -14,11 +21,11 @@
     <p>@(Model[0].Low)</p>
 
     @if (Model[0].Forecast == "snow")
-     {
+    {
         <p>Pack Snowshoes</p>
-     }
+    }
     else if (Model[0].Forecast == "rain")
-     {
+    {
         <p>Pack rain gear and waterproof shoes</p>
     }
     else if (Model[0].Forecast == "thunderstorms")
@@ -30,15 +37,15 @@
         <p>Pack sunblock</p>
     }
 
-    @if (Model[0].High > 75 || Model[0].Low > 75 )
+    @if (Model[0].High > 75 || Model[0].Low > 75)
     {
         <p>Bring an extra gallon of water</p>
     }
-    else if (Model[0].High - Model[0].Low > 20 )
+    else if (Model[0].High - Model[0].Low > 20)
     {
         <p>Wear breathable layers</p>
     }
-    else if (Model[0].High < 20 || Model[0].Low < 20 )
+    else if (Model[0].High < 20 || Model[0].Low < 20)
     {
         <p>There is a danger of exposure to frigid tempatures</p>
     }

@@ -19,25 +19,45 @@ namespace Capstone.Web.Controllers
 
         public IActionResult Index(string parkCode)
         {
-            var weather = weatherDAL.GetWeather(parkCode);
-            return View(weather);
+            var tempUnits = GetTempPreference();
+            if (tempUnits == "F")
+            {
+                var weather = weatherDAL.GetWeather(parkCode);
+                return View(weather);
+            }
+            else
+            {
+                var weather = weatherDAL.GetWeather(parkCode);
+                foreach (var w in weather)
+                {
+                    w.CovertTemps();
+                }
+                return View(weather);
+            }
+
         }
 
+        [HttpPost]
+        public IActionResult ChangeTempUnits(string tempUnits, string parkCode)
+        {
+            SaveTempUnits(tempUnits);
+            return RedirectToAction("Index", new { parkCode = parkCode} );
+        }
 
         private string GetTempPreference()
         {
-            var tempUnits = HttpContext.Session.Get<string>("tempUnits");
+            var tempUnits = HttpContext.Session.GetString("tempUnits");
             if (tempUnits == null)
             {
                 tempUnits = "F";
-                HttpContext.Session.Set("tempUnits", "F");
+                HttpContext.Session.SetString("tempUnits", "F");
             }
             return tempUnits;
         }
 
         private void SaveTempUnits(string tempUnit)
         {
-            HttpContext.Session.Set("tempUnits", tempUnit);
+            HttpContext.Session.SetString("tempUnits", tempUnit);
         }
 
 

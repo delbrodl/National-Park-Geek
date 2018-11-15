@@ -8,6 +8,6 @@ namespace Capstone.Web.DAL
 {
     public interface IWeatherDAL
     {
-       IList<Weather> GetWeather(string parkCode);
+        IList<Weather> GetWeather(string parkCode);
     }
 }
