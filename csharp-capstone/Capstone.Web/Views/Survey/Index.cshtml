@@ -1,0 +1,30 @@
+﻿@model Survey
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form method="post" asp-controller="survey" asp-action="results">
+
+    <label asp-for="ParkCode"></label>
+    <select asp-for="ParkCode" asp-items="Survey.ParkCodeItems"></select>
+    <br />
+
+    <label asp-for="Email"></label>
+    <input asp-for="Email" /> <br />
+
+    <label asp-for="ParkCode"></label>
+    <select asp-for="ParkCode" asp-items="Survey.States"></select>
+    <br />
+
+    <label asp-for="ActivityLevel"></label>
+    <input type="radio" name="ActivityLevel" value="Inactive" />Inactive
+    <input type="radio" name="ActivityLevel" value="Sedentary" />Sedentary
+    <input type="radio" name="ActivityLevel" value="Active" />Active
+    <input type="radio" name="ActivityLevel" value="Extremely Active" />Extremely Active
+
+    <br />
+    <input type="submit" value="Submit" />
+
+</form>
+

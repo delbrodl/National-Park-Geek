@@ -60,6 +60,5 @@ namespace Capstone.Web.Controllers
             HttpContext.Session.SetString("tempUnits", tempUnit);
         }
 
-
     }
 }
