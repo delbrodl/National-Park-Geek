@@ -16,23 +16,17 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
+
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Capstone.Web</a>
+                <img src="~/images/logo.png" alt="National Park Geek logo" />
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Survey" asp-action="Index">Take the Survey!</a></li>
-                    @*<li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
+                    <li><a asp-area="" asp-controller="Survey" asp-action="Index">Survey</a></li>
                 </ul>
             </div>
         </div>
@@ -40,7 +34,7 @@
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="container body-content">
+    <div class="container body-content" id="bodycontent">
         @RenderBody()
         <hr />
         <footer>

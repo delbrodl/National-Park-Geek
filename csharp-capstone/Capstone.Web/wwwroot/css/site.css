@@ -35,3 +35,19 @@ body {
         display: none;
     }
 }
+
+.navbar img{
+    height: 100px;
+    width: auto;
+}
+
+#bodycontent {
+    margin-top: 75px;
+}
+
+.nav {
+    font-size: 25px;
+    font-weight:bold;
+    padding-top: 25px;
+    padding-left: 25px;
+}
