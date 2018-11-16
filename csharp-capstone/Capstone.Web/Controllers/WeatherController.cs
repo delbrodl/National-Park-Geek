@@ -23,18 +23,15 @@ namespace Capstone.Web.Controllers
             if (tempUnits == "F")
             {
                 var weather = weatherDAL.GetWeather(parkCode);
+                weather[0].Units = 'F';
                 return View(weather);
             }
             else
             {
                 var weather = weatherDAL.GetWeather(parkCode);
-                foreach (var w in weather)
-                {
-                    w.CovertTemps();
-                }
+                weather[0].Units = 'C';
                 return View(weather);
             }
-
         }
 
         [HttpPost]
@@ -44,7 +41,7 @@ namespace Capstone.Web.Controllers
             return RedirectToAction("Index", new { parkCode = parkCode} );
         }
 
-        private string GetTempPreference()
+        public string GetTempPreference()
         {
             var tempUnits = HttpContext.Session.GetString("tempUnits");
             if (tempUnits == null)
