@@ -3,67 +3,77 @@
     ViewData["Title"] = "Index";
 }
 
-<form asp-controller="weather" asp-action="ChangeTempUnits" method="post">
-    <input type="radio" name="tempUnits" value="F" />Fahrenheit
-    <input type="radio" name="tempUnits" value="C" />Celsius
-    <input type="hidden" name="parkCode" value="@(Model[0].ParkCode)" />
-    <input type="submit" value="submit" />
+<div class="tempPref">
+    <form asp-controller="weather" asp-action="ChangeTempUnits" method="post">
+        <label class="activity">
+            <input type="radio" name="tempUnits" value="F" />Fahrenheit
+            <span class="check"></span>
+        </label>
+        <label class="activity">
+            <input type="radio" name="tempUnits" value="C" />Celsius
+            <span class="check"></span>
+        </label>
+        <input type="hidden" name="parkCode" value="@(Model[0].ParkCode)" />
+        <input type="submit" value="submit" />
+    </form>
+</div>
 
-</form>
-
-<div>
-    <h2>Today</h2>
-    <img src="~/images/weather/@(Model[0].Forecast).png" alt="@Model[0].Forecast" />
-    <h3>High</h3>
-    @if ((Model[0].Units) == 'C')
-    {
-        <p>@Model[0].TempConvert(Model[0].High)</p>
-    }
-    else
-    {
-        <p>@(Model[0].High)</p>
-    }
-
-
-    <h3>Low</h3>
-    @if ((Model[0].Units) == 'C')
-    {
-        <p>@Model[0].TempConvert(Model[0].Low)</p>
-    }
-    else
-    {
-        <p>@(Model[0].Low)</p>
-    }
-    <p>@(Model[0].Messages())</p>         
+<div class="weather" id="WeatherAll">
+    <div id="today">
+        <h2>Today</h2>
+        <img src="~/images/weather/@(Model[0].Forecast).png" alt="@Model[0].Forecast" />
+        <h3>High</h3>
+        @if ((Model[0].Units) == 'C')
+        {
+            <p>@Model[0].TempConvert(Model[0].High)</p>
+        }
+        else
+        {
+            <p>@(Model[0].High)</p>
+        }
 
 
-    @for (int i = 1; i < 5; i++)
-    {
-        <div>
-            <img src="~/images/weather/@(Model[i].Forecast).png" alt="@(Model[i].Forecast)" />
-            <h3>Day @(Model[i].Day)</h3>
-            <h3>High</h3>
-            @if ((Model[0].Units) == 'C')
-            {
-                <p>@Model[i].TempConvert(Model[i].High)</p>
-            }
-            else
-            {
-                <p>@(Model[i].High)</p>
-            }
+        <h3>Low</h3>
+        @if ((Model[0].Units) == 'C')
+        {
+            <p>@Model[0].TempConvert(Model[0].Low)</p>
+        }
+        else
+        {
+            <p>@(Model[0].Low)</p>
+        }
+        <p class="message">@(Model[0].Messages())</p>
+    </div>
 
-            <h3>Low</h3>
-            @if ((Model[0].Units) == 'C')
-            {
-                <p>@Model[i].TempConvert(Model[0].Low)</p>
-            }
-            else
-            {
-                <p>@(Model[0].Low)</p>
-            }
-            <p>@(Model[i].Messages())</p>
+    <div class="weather" id="days2to5">
+        @for (int i = 1; i < 5; i++)
+        {
+            <div class="weathertile">
+                <img src="~/images/weather/@(Model[i].Forecast).png" alt="@(Model[i].Forecast)" />
+                <h3>Day @(Model[i].Day)</h3>
+                <h4>High</h4>
+                @if ((Model[0].Units) == 'C')
+                {
+                    <p>@Model[i].TempConvert(Model[i].High)</p>
+                }
+                else
+                {
+                    <p>@(Model[i].High)</p>
+                }
 
-        </div>
-    }
+                <h4>Low</h4>
+                @if ((Model[0].Units) == 'C')
+                {
+                    <p>@Model[i].TempConvert(Model[0].Low)</p>
+                }
+                else
+                {
+                    <p>@(Model[0].Low)</p>
+                }
+                <p class="message">@(Model[i].Messages())</p>
+
+            </div>
+        }
+    </div>
 </div>
 

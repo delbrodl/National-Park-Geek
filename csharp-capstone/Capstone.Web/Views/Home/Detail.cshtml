@@ -7,13 +7,13 @@
     <img src="~/images/parks/@(Model.ParkCode).jpg" alt="Scenic View of Park" />
     <h2>@Model.Name</h2>
     <p>State: @Model.Location</p>
-    <p>Acreage: @Model.Acreage acres</p>
-    <p>Elevation: @Model.Elevation ft.</p>
-    <p>Miles of Trail: @Model.MilesOfTrail miles</p>
-    <p>Number of Campsites: @Model.NumOfCampsites</p>
+    <p>Acreage: @string.Format("{0:n0}", Model.Acreage) acres</p>
+    <p>Elevation: @string.Format("{0:n0}", Model.Elevation) ft.</p>
+    <p>Miles of Trail: @string.Format("{0:n0}", Model.MilesOfTrail) miles</p>
+    <p>Number of Campsites: @string.Format("{0:n0}", Model.NumOfCampsites)</p>
     <p>Climate: @Model.Climate</p>
     <p>Year Founded: @Model.YearFounded</p>
-    <p>Annual Visitor Count: @Model.AnnualVisitors on average/year</p>
+    <p>Annual Visitor Count: @string.Format("{0:n0}", Model.AnnualVisitors) on average/year</p>
     <p>Number of Animal Species: @Model.NumOfAnimalSpecies</p>
     <p>Entry Fee: $@(Model.EntryFee).00</p>
     <br />

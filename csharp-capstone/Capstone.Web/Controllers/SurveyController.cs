@@ -28,9 +28,16 @@ namespace Capstone.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult SaveSurvey(Survey survey)
         {
-            surveyDAL.AddSurvey(survey);
-
-            return RedirectToAction("Favorites", "Survey");
+            if (ModelState.IsValid)
+            {
+                surveyDAL.AddSurvey(survey);
+                return RedirectToAction("Favorites", "Survey");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Survey");
+            }
+           
         }
 
         [HttpGet]

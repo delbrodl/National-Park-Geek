@@ -17,6 +17,7 @@ namespace Capstone.Web.Controllers
             this.weatherDAL = weatherDAL;
         }
 
+        [HttpGet]
         public IActionResult Index(string parkCode)
         {
             var tempUnits = GetTempPreference();
@@ -35,6 +36,7 @@ namespace Capstone.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult ChangeTempUnits(string tempUnits, string parkCode)
         {
             SaveTempUnits(tempUnits);

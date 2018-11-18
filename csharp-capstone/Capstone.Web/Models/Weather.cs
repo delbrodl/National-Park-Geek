@@ -36,19 +36,19 @@ namespace Capstone.Web.Models
             string m = "";
             if (this.Forecast == "snow")
             {
-                m = "Pack Snowshoes; ";
+                m = "Pack Snowshoes. ";
             }
             else if (this.Forecast == "rain")
             {
-                m = "Pack rain gear and waterproof shoes; ";
+                m = "Pack rain gear and waterproof shoes. ";
             }
             else if (Forecast == "thunderstorms")
             {
-                m = "Seek shelter and avoid hiking on exposed trails; ";
+                m = "Seek shelter and avoid hiking on exposed trails. ";
             }
             else if (Forecast == "sun")
             {
-                m = "Pack sunblock; ";
+                m = "Pack sunblock. ";
             }
 
             if (this.High > 75 || this.Low > 75)

@@ -36,7 +36,7 @@ body {
     }
 }
 
-.navbar img{
+.navbar img {
     height: 100px;
     width: auto;
 }
@@ -47,7 +47,181 @@ body {
 
 .nav {
     font-size: 25px;
-    font-weight:bold;
+    font-weight: bold;
     padding-top: 25px;
     padding-left: 25px;
+}
+
+.ParkTile {
+    display: flex;
+}
+
+    .ParkTile img {
+        padding: 25px;
+    }
+
+.ParkInfo {
+    padding-left: 25px;
+}
+
+.weather {
+    text-align: center;
+}
+
+    .weather h4 {
+        font-weight: bold;
+    }
+
+#WeatherAll {
+    display: inline-grid;
+    grid-template-areas: "today other";
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 10px;
+    width: 90%;
+}
+
+#today {
+    grid-area: today;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#days2to5 {
+    grid-area: other;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.weathertile {
+    /*display: block;
+    max-width: 100%;
+    height: auto;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#days2to5 img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.message {
+    font-style: italic;
+    color: red;
+    text-align: center;
+}
+
+.tempPref {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+.contain {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.activity {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    .activity input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+.check {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: lightslategray;
+    border-radius: 50%;
+}
+
+.activity:hover input ~ .check {
+    background-color: #ccc;
+}
+
+.activity input:checked ~ .check {
+    background-color: #2196F3;
+}
+
+.check:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.activity input:checked ~ .check:after {
+    display: block;
+}
+
+.activity .check:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+.parkFave {
+    display: inline-grid;
+    grid-template-areas: "pic name votes";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 20px;
+    width: 90%;
+}
+
+    .parkFave img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+.faveMessage {
+    font-size: 20px;
 }

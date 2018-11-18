@@ -17,7 +17,7 @@ namespace Capstone.Web.Controllers
             this.parkDAL = parkDAL;
         }
 
-
+        [HttpGet]
         public IActionResult Index(Park park)
         {
             var parks = parkDAL.GetAllParks();
@@ -27,14 +27,13 @@ namespace Capstone.Web.Controllers
             return View(parks);
         }
 
+        [HttpGet]
         public IActionResult Detail(string parkCode)
         {
             ParkDetail park = parkDAL.GetParkDetails(parkCode);
 
             return View(park);
-        }
-        
-      
+        }      
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

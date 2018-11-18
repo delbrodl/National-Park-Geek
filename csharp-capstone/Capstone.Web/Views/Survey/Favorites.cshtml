@@ -5,10 +5,15 @@
 
 <h2>Favorites</h2>
 
+<p class="faveMessage">Thank you for voting! We have ranked all of our visitors favorite parks. See where your favorite lands below: </p>
+
+<div class="favorites">
 @foreach (var sr in Model)
 {
-    <img src="~/images/parks/@(sr.ParkCode).jpg" alt="Scenic View of @sr.ParkName" />
-    <h3>@sr.ParkName</h3>
-    <h4>@sr.Count</h4>
+    <div class="parkFave">
+        <img src="~/images/parks/@(sr.ParkCode).jpg" alt="Scenic View of @sr.ParkName" />
+        <h3>@sr.ParkName</h3>
+        <h3>Votes: @sr.Count</h3>
+    </div>
 }
-
+</div>

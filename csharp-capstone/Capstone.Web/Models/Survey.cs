@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,12 +15,14 @@ namespace Capstone.Web.Models
         [DisplayName("Favorite National Park: ")]
         public string ParkCode { get; set; }
 
+        [Required]
         [DisplayName("Your email: ")]
         public string Email { get; set; }
 
         [DisplayName("State of residence: ")]
         public string State { get; set; }
 
+        [Required]
         [DisplayName("Activity Level: ")]
         public string ActivityLevel { get; set; }
 
